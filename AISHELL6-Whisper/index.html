@@ -77,7 +77,7 @@
             <div class="d-flex flex-wrap justify-content-center hero-badges mt-3">
               <span class="hero-badge">30 h Parallel Whisper/Normal Speech</span>
               <span class="hero-badge">167 Speakers</span>
-              <span class="hero-badge">RGBD Video Sync</span>
+              <span class="hero-badge">RGB Video Sync</span>
             </div>
           </div>
         </div>
@@ -105,7 +105,7 @@
           </div>
           <div class="col-12 col-sm-6 col-md-4">
             <div class="stat-card h-100 text-center">
-              <span class="stat-value">RGBD</span>
+              <span class="stat-value">RGB</span>
               <span class="stat-label">Video</span>
               <p class="stat-desc mb-0">Frontal facial capture synchronized at 25 fps for lip-reading research.</p>
             </div>
@@ -124,7 +124,7 @@
                 <li>Controlled studio sessions capturing whispered and normal speech in parallel for each participant.
                 </li>
                 <li>167 speakers delivering 10–20 minutes of unique poetry readings without textual overlap.</li>
-                <li>121 sessions feature simultaneous high-fidelity audio and RGBD video; 46 sessions provide premium
+                <li>121 sessions feature simultaneous high-fidelity audio and RGB video; 46 sessions provide premium
                   audio-only recordings.</li>
               </ul>
             </div>
@@ -409,16 +409,49 @@
                 Li, Cancan · Su, Fei · Liu, Juan · Bu, Hui · Wan, Yulong · Suo, Hongbin · Li, Ming
               </p>
               <div class="publication-links">
-                <a class="publication-link publication-link--muted" role="button" aria-disabled="true">BibTeX</a>
+                <a class="publication-link publication-link--muted" role="button" onclick="showBibtex()">BibTeX</a>
                 <span class="publication-divider" aria-hidden="true"></span>
                 <a class="publication-link" href="https://arxiv.org/abs/2509.23833" target="_blank"
                   rel="noopener">arXiv</a>
+              </div>
+              <div id="bibtex-content" class="mt-3" style="display: block;">
+                <pre class="p-3 border rounded bg-light" style="font-size: 0.85rem; background-color: #f8f9fa !important;">
+    @article{li2025aishell6,
+      title={AISHELL6-whisper: A Chinese Mandarin Audio-visual Whisper Speech Dataset with Speech Recognition Baselines},
+      author={Li, Cancan and Su, Fei and Liu, Juan and Bu, Hui and Wan, Yulong and Suo, Hongbin and Li, Ming},
+      journal={arXiv preprint arXiv:2509.23833},
+      year={2025}
+    }</pre>
+                <button class="btn btn-sm btn-outline-primary mt-2" onclick="copyBibtex()">Copy</button>
               </div>
             </article>
           </div>
         </div>
       </div>
     </section>
+
+    <script>
+    function showBibtex() {
+      const bibtexContent = document.getElementById('bibtex-content');
+      if (bibtexContent.style.display === 'none') {
+        bibtexContent.style.display = 'block';
+      } else {
+        bibtexContent.style.display = 'none';
+      }
+    }
+
+    function copyBibtex() {
+      const bibtex = `@article{li2025aishell6,
+      title={AISHELL6-whisper: A Chinese Mandarin Audio-visual Whisper Speech Dataset with Speech Recognition Baselines},
+      author={Li, Cancan and Su, Fei and Liu, Juan and Bu, Hui and Wan, Yulong and Suo, Hongbin and Li, Ming},
+      journal={arXiv preprint arXiv:2509.23833},
+      year={2025}
+    }`;
+      navigator.clipboard.writeText(bibtex).then(() => {
+        alert('BibTeX copied to clipboard!');
+      });
+    }
+    </script>
 
     <section class="py-5">
       <div class="container">
@@ -437,6 +470,18 @@
       </div>
     </section>
 
+    <section class="py-5 bg-light">
+      <div class="container">
+        <h2 class="section-heading mb-4">Citation</h2>
+        <div class="citation-card p-4 border rounded" style="background-color: white; border: 1px solid #dee2e6;">
+          <pre style="font-family: 'Courier New', monospace; font-size: 0.9rem; margin: 0;">
+    @article{li2025aishell6,
+      title={AISHELL6-whisper: A Chinese Mandarin Audio-visual Whisper Speech Dataset with Speech Recognition Baselines},
+      author={Li, Cancan and Su, Fei and Liu, Juan and Bu, Hui and Wan, Yulong and Suo, Hongbin and Li, Ming},
+      journal={arXiv preprint arXiv:2509.23833},
+      year={2025}
+    }</pre>
+    </section>
 
     <section class="py-5">
       <div class="container">
