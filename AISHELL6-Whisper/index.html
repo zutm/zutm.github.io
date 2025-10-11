@@ -1,0 +1,447 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="description"
+    content="A Chinese Mandarin Audio-visual WHISPER SPEECH Dataset with Speech Recognition Baselines">
+  <meta name="keywords" content="AISHELL6-Whisper, Whispered Speech Recognition, Audio-visual Speech Recognition">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>AISHELL6-Whisper: A Chinese Mandarin Audio-visual WHISPER SPEECH Dataset</title>
+
+  <script>
+    var _hmt = _hmt || [];
+    (function () {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?31b1db006c00e387bfb0877c38e2cbf2";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@600&display=swap"
+    rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-/mhDoLbDldZc3qpsJHpLogda//BVZbgYuw6kof4u2FrCedxOtgRZDTHgHUhOCVim"
+    crossorigin="anonymous"></script>
+
+  <link rel="stylesheet" href="./static/css/index.css">
+</head>
+
+<body>
+  <nav class="navbar navbar-expand-lg bg-light sticky-top" id="mainNav">
+    <div class="container">
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive"
+        aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse justify-content-center" id="navbarResponsive">
+        <ul class="navbar-nav text-uppercase">
+          <li class="nav-item">
+            <a class="nav-link" href="#section1">Dataset</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#section3">Publication</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#section4">Application</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <main id="content">
+    <section class="bg-gradient-primary py-5">
+      <div class="container">
+        <div class="row justify-content-center">
+          <div class="col-md-10 text-center">
+            <h1 class="display-4 fw-bold mb-3">
+              AISHELL6-Whisper:
+              <span class="text-highlight">Chinese Mandarin Audio-Visual Whisper Speech</span> Dataset
+            </h1>
+            <p class="lead fs-5 mb-4">
+              A Large-Scale Open-Source Audio-Visual Whisper Speech Dataset
+            </p>
+            <div class="d-flex flex-wrap justify-content-center hero-badges mt-3">
+              <span class="hero-badge">30 h Parallel Whisper/Normal Speech</span>
+              <span class="hero-badge">167 Speakers</span>
+              <span class="hero-badge">RGBD Video Sync</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="py-5">
+      <div class="container">
+        <h2 class="section-heading mb-4" id="section1">Dataset Overview</h2>
+
+        <div class="row g-4 align-items-stretch mb-4 justify-content-center">
+          <div class="col-12 col-sm-6 col-md-4">
+            <div class="stat-card stat-card--accent h-100 text-center">
+              <span class="stat-value">30 h</span>
+              <span class="stat-label">Normal/Whisper</span>
+              <p class="stat-desc mb-0">Parallel voiced speech to aid transfer and multi-task learning.</p>
+            </div>
+          </div>
+          <div class="col-12 col-sm-6 col-md-4">
+            <div class="stat-card h-100 text-center">
+              <span class="stat-value">167</span>
+              <span class="stat-label">Speakers</span>
+              <p class="stat-desc mb-0">Diverse Mandarin accents with balanced gender distribution.</p>
+            </div>
+          </div>
+          <div class="col-12 col-sm-6 col-md-4">
+            <div class="stat-card h-100 text-center">
+              <span class="stat-value">RGBD</span>
+              <span class="stat-label">Video</span>
+              <p class="stat-desc mb-0">Frontal facial capture synchronized at 25 fps for lip-reading research.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="row g-4 align-items-stretch">
+          <div class="col-lg-12">
+            <div class="info-panel h-100">
+              <h3 class="fw-semibold mb-3">Large-scale whisper speech aligned with normal voice and video cues</h3>
+              <p class="mb-3">
+                AISHELL6-Whisper is a large-scale open-source audio-visual whisper speech dataset containing 30 hours
+                each of whisper and parallel normal speech, with synchronized frontal facial videos.
+              </p>
+              <ul class="info-list">
+                <li>Controlled studio sessions capturing whispered and normal speech in parallel for each participant.
+                </li>
+                <li>167 speakers delivering 10–20 minutes of unique poetry readings without textual overlap.</li>
+                <li>121 sessions feature simultaneous high-fidelity audio and RGBD video; 46 sessions provide premium
+                  audio-only recordings.</li>
+              </ul>
+            </div>
+          </div>
+
+        </div>
+
+        <div class="row g-4 mt-1">
+          <div class="col-md-4">
+            <div class="feature-card h-100">
+              <h3 class="feature-title mb-2">🎙️ Recording environment</h3>
+              <p class="mb-0">Collected in a controlled studio environment with parallel whispered and normal speech
+                sessions.</p>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="feature-card h-100">
+              <h3 class="feature-title mb-2">🔊 Audio</h3>
+              <p class="mb-0">Single-channel Neumann U87 microphone, 48 kHz sampling rate, background noise below 20 dB.
+              </p>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="feature-card h-100">
+              <h3 class="feature-title mb-2">📷 Video</h3>
+              <p class="mb-0">RGBD camera placed one meter in front of the speaker, 1280×720 resolution, 25 fps.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="table-area mt-5">
+          <div class="table-responsive">
+            <table class="table table-custom align-middle text-center mb-0">
+              <caption class="table-caption">Split statistics for AISHELL6-Whisper (hours and utterances per condition).
+              </caption>
+              <thead>
+                <tr>
+                  <th>Set</th>
+                  <th>Video</th>
+                  <th>Num of Spk</th>
+                  <th>Type</th>
+                  <th>Time (hrs)</th>
+                  <th>Utterances</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td rowspan="4"><span class="table-badge">Train</span></td>
+                  <td rowspan="2"><span class="table-pill table-pill--yes">Yes</span></td>
+                  <td rowspan="2">82</td>
+                  <td><span class="table-pill table-pill--normal">Normal</span></td>
+                  <td>14.8339</td>
+                  <td>10012</td>
+                </tr>
+                <tr>
+                  <td><span class="table-pill table-pill--whisper">Whisper</span></td>
+                  <td>14.8359</td>
+                  <td>9971</td>
+                </tr>
+                <tr>
+                  <td rowspan="2"><span class="table-pill table-pill--no">No</span></td>
+                  <td rowspan="2">28</td>
+                  <td><span class="table-pill table-pill--normal">Normal</span></td>
+                  <td>4.8887</td>
+                  <td>3335</td>
+                </tr>
+                <tr>
+                  <td><span class="table-pill table-pill--whisper">Whisper</span></td>
+                  <td>5.0526</td>
+                  <td>3332</td>
+                </tr>
+                <tr>
+                  <td rowspan="4"><span class="table-badge">Valid</span></td>
+                  <td rowspan="2"><span class="table-pill table-pill--yes">Yes</span></td>
+                  <td rowspan="2">19</td>
+                  <td><span class="table-pill table-pill--normal">Normal</span></td>
+                  <td>3.3252</td>
+                  <td>2331</td>
+                </tr>
+                <tr>
+                  <td><span class="table-pill table-pill--whisper">Whisper</span></td>
+                  <td>3.3983</td>
+                  <td>2304</td>
+                </tr>
+                <tr>
+                  <td rowspan="2"><span class="table-pill table-pill--no">No</span></td>
+                  <td rowspan="2">10</td>
+                  <td><span class="table-pill table-pill--normal">Normal</span></td>
+                  <td>1.731</td>
+                  <td>1190</td>
+                </tr>
+                <tr>
+                  <td><span class="table-pill table-pill--whisper">Whisper</span></td>
+                  <td>1.8038</td>
+                  <td>1191</td>
+                </tr>
+                <tr>
+                  <td rowspan="4"><span class="table-badge">Test</span></td>
+                  <td rowspan="2"><span class="table-pill table-pill--yes">Yes</span></td>
+                  <td rowspan="2">20</td>
+                  <td><span class="table-pill table-pill--normal">Normal</span></td>
+                  <td>3.4126</td>
+                  <td>2423</td>
+                </tr>
+                <tr>
+                  <td><span class="table-pill table-pill--whisper">Whisper</span></td>
+                  <td>3.3601</td>
+                  <td>2351</td>
+                </tr>
+                <tr>
+                  <td rowspan="2"><span class="table-pill table-pill--no">No</span></td>
+                  <td rowspan="2">8</td>
+                  <td><span class="table-pill table-pill--normal">Normal</span></td>
+                  <td>1.3477</td>
+                  <td>940</td>
+                </tr>
+                <tr>
+                  <td><span class="table-pill table-pill--whisper">Whisper</span></td>
+                  <td>1.3021</td>
+                  <td>942</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <div class="table-area mt-4">
+          <div class="table-responsive">
+            <table class="table table-custom align-middle text-center mb-0">
+              <caption class="table-caption">Context against existing whisper speech corpora.</caption>
+              <thead>
+                <tr>
+                  <th class="text-start">Dataset</th>
+                  <th>Modality</th>
+                  <th>Language</th>
+                  <th>Time (hrs)</th>
+                  <th>Parallel</th>
+                  <th>Num of Spk</th>
+                  <th>Sampling Rate</th>
+                  <th>Bit</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td class="text-start">UTVE-I</td>
+                  <td>Audio</td>
+                  <td>English</td>
+                  <td>&lt;1</td>
+                  <td>Yes</td>
+                  <td>12</td>
+                  <td>44.1HZ</td>
+                  <td>16</td>
+                </tr>
+                <tr>
+                  <td class="text-start">UTVE-II</td>
+                  <td>Audio</td>
+                  <td>English</td>
+                  <td>1</td>
+                  <td>No</td>
+                  <td>112</td>
+                  <td>44.1HZ</td>
+                  <td>16</td>
+                </tr>
+                <tr>
+                  <td class="text-start">AVWD</td>
+                  <td>Audio-visual</td>
+                  <td>Chinese</td>
+                  <td>&lt;2.44</td>
+                  <td>Yes</td>
+                  <td>10</td>
+                  <td>44.1HZ</td>
+                  <td>16</td>
+                </tr>
+                <tr>
+                  <td class="text-start">CHAINS</td>
+                  <td>Audio</td>
+                  <td>English</td>
+                  <td>&lt;3</td>
+                  <td>Yes</td>
+                  <td>36</td>
+                  <td>44.1kHz</td>
+                  <td>16</td>
+                </tr>
+                <tr>
+                  <td class="text-start">Whi-spe</td>
+                  <td>Audio</td>
+                  <td>Serbian</td>
+                  <td>&lt;5</td>
+                  <td>Yes</td>
+                  <td>10</td>
+                  <td>22050HZ</td>
+                  <td>16</td>
+                </tr>
+                <tr>
+                  <td class="text-start">AV-Whisper</td>
+                  <td>Audio-visual</td>
+                  <td>English</td>
+                  <td>&lt;10</td>
+                  <td>Yes</td>
+                  <td>11</td>
+                  <td>48kHZ</td>
+                  <td>-</td>
+                </tr>
+                <tr>
+                  <td class="text-start">CIAIR</td>
+                  <td>Audio-visual</td>
+                  <td>Japanese</td>
+                  <td>15</td>
+                  <td>Yes</td>
+                  <td>123</td>
+                  <td>16 kHz</td>
+                  <td>16</td>
+                </tr>
+                <tr>
+                  <td class="text-start">iWhisper-Mandarin</td>
+                  <td>Audio</td>
+                  <td>Chinese</td>
+                  <td>15</td>
+                  <td>Yes</td>
+                  <td>80</td>
+                  <td>16kHz</td>
+                  <td>-</td>
+                </tr>
+                <tr>
+                  <td class="text-start">wSPIRE</td>
+                  <td>Audio</td>
+                  <td>English</td>
+                  <td>18</td>
+                  <td>Yes</td>
+                  <td>88</td>
+                  <td>采集时 44.1kHz，处理后16kHz</td>
+                  <td>16</td>
+                </tr>
+                <tr>
+                  <td class="text-start">wTIMIT</td>
+                  <td>Audio</td>
+                  <td>English</td>
+                  <td>26</td>
+                  <td>Yes</td>
+                  <td>48</td>
+                  <td>44.1kHz</td>
+                  <td>16</td>
+                </tr>
+                <tr class="table-focus">
+                  <td class="text-start fw-semibold">AISHELL6-Whisper</td>
+                  <td>Audio-visual</td>
+                  <td>Chinese</td>
+                  <td>30</td>
+                  <td>Yes</td>
+                  <td>167</td>
+                  <td>48kHZ</td>
+                  <td>16</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="py-5">
+      <div class="container">
+        <h2 class="section-heading mb-4" id="section2">Demo Samples</h2>
+      </div>
+    </section>
+
+    <section class="py-5">
+      <div class="container">
+        <h2 class="section-heading mb-4" id="section2">Publications</h2>
+      </div>
+    </section>
+
+    <section class="py-5">
+      <div class="container">
+        <h2 class="section-heading mb-4" id="section2">Applications</h2>
+        <p>AISHELL6-Whisper can be applied in the following areas:</p>
+      </div>
+    </section>
+
+
+    <section class="py-5">
+      <div class="container">
+        <h2 class="section-heading mb-4" id="section2">Download</h2>
+        <p>The AISHELL6-Whisper dataset is licensed under CC BY-NC 4.0. This means that you can share and adapt the
+          dataset for non-commercial purposes as long as you provide appropriate attribution and distribute your
+          contributions under the same license. However, the dataset cannot be used for commercial purposes. </p>
+        <div class="row g-4 align-items-stretch mb-4 justify-content-center">
+          <div class="col-md-5 mb-3">
+            <div class="download-card p-4 border rounded text-center"
+              style="background-color: #f8f9fa; border: 2px solid #e9ecef;">
+              <div class="mb-3">
+                <img src="static/images/huggingface_logo-noborder.svg" alt="Huggingface"
+                  style="height: 120px; width: auto">
+              </div>
+              <h5 class="mb-3">HuggingFace</h5>
+              <p class="text-muted mb-3">Download from HuggingFace Datasets</p>
+              <a href="XXX" target="_blank" class="btn btn-primary btn-lg">
+                <i class="fas fa-download"></i> Download
+              </a>
+            </div>
+          </div>
+          <div class="col-md-5 mb-3">
+            <div class="download-card p-4 border rounded text-center"
+              style="background-color: #f8f9fa; border: 2px solid #e9ecef;">
+              <div class="mb-3">
+                <img src="static/images/AISHELL.png" alt="AI-SHELL Logo" style="height: 120px; width: auto;">
+              </div>
+              <h5 class="mb-3">AI-SHELL</h5>
+              <p class="text-muted mb-3">Donwload from AI-SHELL Platform</p>
+              <a href="https://aishelltech.com/" target="_blank" class="btn btn-success btn-lg">
+                <i class="fas fa-download"></i> Download
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="py-5">
+      <div class="container">
+        <h2 class="section-heading mb-4" id="section2">Download</h2>
+
+  </main>
+</body>
+
+</html>

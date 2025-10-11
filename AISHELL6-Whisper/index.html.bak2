@@ -1,0 +1,695 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="description"
+    content="A Chinese Mandarin Audio-visual WHISPER SPEECH Dataset with Speech Recognition Baselines">
+  <meta name="keywords" content="AISHELL6-Whisper, Whispered Speech Recognition, Audio-visual Speech Recognition">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>AISHELL6-Whisper: A Chinese Mandarin Audio-visual WHISPER SPEECH Dataset</title>
+
+  <script>
+    var _hmt = _hmt || [];
+    (function () {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?31b1db006c00e387bfb0877c38e2cbf2";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@600&display=swap"
+    rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-/mhDoLbDldZc3qpsJHpLogda//BVZbgYuw6kof4u2FrCedxOtgRZDTHgHUhOCVim"
+    crossorigin="anonymous"></script>
+
+  <style>
+    :root {
+      --primary-500: #0d6efd;
+      --primary-600: #0b5ed7;
+      --accent-500: #a855f7;
+      --neutral-900: #0f1b3d;
+      --neutral-600: #4b5879;
+      --surface: #ffffff;
+      --surface-soft: #f3f6ff;
+      --border-soft: #dce4ff;
+    }
+
+    body {
+      font-family: 'Inter', 'Helvetica Neue', Arial, sans-serif;
+      background-color: #eff3fb;
+      color: var(--neutral-900);
+      line-height: 1.6;
+    }
+
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+      font-family: 'Playfair Display', 'Times New Roman', serif;
+      color: var(--neutral-900);
+    }
+
+    nav.navbar {
+      backdrop-filter: blur(12px);
+      box-shadow: 0 10px 30px rgba(15, 27, 61, 0.08);
+    }
+
+    .bg-gradient-primary {
+      background: linear-gradient(135deg, #0d47a1 0%, #1976d2 35%, #39a0ff 100%);
+      color: white;
+    }
+
+    .hero-eyebrow {
+      display: inline-block;
+      letter-spacing: 0.2em;
+      font-size: 0.75rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      color: rgba(255, 255, 255, 0.8);
+      margin-bottom: 0.75rem;
+    }
+
+    .text-highlight {
+      background: linear-gradient(120deg, rgba(255, 255, 255, 0.85) 0%, rgba(255, 255, 255, 0.4) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .hero-badges {
+      gap: 0.75rem;
+    }
+
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.6rem 1.1rem;
+      border-radius: 999px;
+      border: 1px solid rgba(255, 255, 255, 0.25);
+      background: rgba(10, 36, 99, 0.45);
+      color: rgba(255, 255, 255, 0.9);
+      font-weight: 500;
+      font-size: 0.95rem;
+      backdrop-filter: blur(6px);
+    }
+
+    .section-heading {
+      margin-top: 1.5em;
+      padding-bottom: 0.3em;
+      border-bottom: 1px solid rgba(13, 34, 84, 0.1);
+      letter-spacing: 0.01em;
+    }
+
+    .info-panel {
+      background: var(--surface);
+      border-radius: 22px;
+      padding: 2.2rem;
+      border: 1px solid var(--border-soft);
+      box-shadow: 0 25px 50px -12px rgba(15, 27, 61, 0.1);
+    }
+
+    .mini-title {
+      font-size: 0.8rem;
+      font-weight: 600;
+      letter-spacing: 0.15em;
+      color: var(--primary-500);
+    }
+
+    .info-panel h3 {
+      font-family: 'Inter', 'Helvetica Neue', Arial, sans-serif;
+      font-weight: 600;
+      font-size: 1.5rem;
+      margin-bottom: 1rem;
+    }
+
+    .info-list {
+      list-style: none;
+      padding-left: 0;
+      margin-bottom: 0;
+    }
+
+    .info-list li {
+      position: relative;
+      padding-left: 1.75rem;
+      margin-bottom: 0.75rem;
+      color: var(--neutral-600);
+    }
+
+    .info-list li::before {
+      content: '';
+      position: absolute;
+      height: 0.65rem;
+      width: 0.65rem;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--primary-500), var(--accent-500));
+      left: 0;
+      top: 0.5rem;
+      box-shadow: 0 0 0 6px rgba(13, 110, 253, 0.15);
+    }
+
+    .stat-card {
+      background: linear-gradient(135deg, rgba(13, 110, 253, 0.12) 0%, rgba(13, 110, 253, 0.05) 100%);
+      border-radius: 20px;
+      padding: 1.8rem 1.2rem;
+      border: 1px solid rgba(13, 110, 253, 0.16);
+      color: var(--neutral-900);
+      box-shadow: 0 15px 30px -15px rgba(13, 110, 253, 0.4);
+    }
+
+    .stat-card--accent {
+      background: linear-gradient(135deg, rgba(168, 85, 247, 0.16) 0%, rgba(15, 27, 61, 0.05) 100%);
+      border: 1px solid rgba(168, 85, 247, 0.2);
+      box-shadow: 0 15px 35px -18px rgba(168, 85, 247, 0.55);
+    }
+
+    .stat-value {
+      font-size: 2rem;
+      font-weight: 700;
+      margin-bottom: 0.25rem;
+      display: block;
+    }
+
+    .stat-label {
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      font-size: 0.8rem;
+      color: var(--primary-600);
+    }
+
+    .stat-desc {
+      font-size: 0.85rem;
+      color: var(--neutral-600);
+    }
+
+    .feature-card {
+      background: var(--surface);
+      border-radius: 18px;
+      padding: 1.5rem;
+      border: 1px solid var(--border-soft);
+      box-shadow: 0 20px 45px -18px rgba(79, 114, 205, 0.2);
+      height: 100%;
+    }
+
+    .feature-title {
+      font-family: 'Inter', 'Helvetica Neue', Arial, sans-serif;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      font-size: 0.85rem;
+      color: var(--primary-500);
+      margin-bottom: 0.75rem;
+    }
+
+    .table-area {
+      background: var(--surface);
+      border-radius: 20px;
+      border: 1px solid var(--border-soft);
+      box-shadow: 0 18px 38px -20px rgba(15, 27, 61, 0.25);
+      padding: 1.5rem 1.4rem;
+    }
+
+    .table-area .table {
+      margin-bottom: 0;
+    }
+
+    .table-custom {
+      border-collapse: collapse;
+      width: 100%;
+    }
+
+    .table-custom thead th {
+      border-bottom: 2px solid var(--border-soft);
+      background: var(--surface-soft);
+      color: var(--neutral-900);
+      font-weight: 600;
+      letter-spacing: 0.03em;
+      padding: 0.9rem 0.75rem;
+    }
+
+    .table-custom tbody tr {
+      transition: background-color 0.2s ease;
+      border-bottom: 1px solid var(--border-soft);
+      background: transparent;
+    }
+
+    .table-custom tbody tr:hover {
+      background: var(--surface-soft);
+    }
+
+    .table-custom tbody td {
+      padding: 0.9rem 0.75rem;
+      color: var(--neutral-600);
+      font-weight: 500;
+      vertical-align: middle;
+    }
+
+    .table-custom tbody tr.table-focus {
+      background: rgba(168, 85, 247, 0.12);
+      border-left: 4px solid var(--accent-500);
+    }
+
+    .table-custom tbody tr.table-focus:hover {
+      background: rgba(168, 85, 247, 0.18);
+    }
+
+    .table-custom tbody tr:last-child {
+      border-bottom: none;
+    }
+
+    .table-caption {
+      caption-side: top;
+      font-size: 0.95rem;
+      font-weight: 600;
+      color: var(--neutral-900);
+      margin-bottom: 0.75rem;
+      letter-spacing: 0.02em;
+    }
+
+    .table-badge {
+      display: inline-block;
+      padding: 0.35rem 1.05rem;
+      border-radius: 999px;
+      background: rgba(13, 110, 253, 0.12);
+      color: var(--primary-500);
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      font-size: 0.75rem;
+    }
+
+    .table-pill {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0.32rem 0.9rem;
+      border-radius: 999px;
+      font-weight: 600;
+      font-size: 0.76rem;
+      letter-spacing: 0.05em;
+    }
+
+    .table-pill--yes {
+      background: rgba(25, 135, 84, 0.12);
+      color: #1e7a4d;
+    }
+
+    .table-pill--no {
+      background: rgba(220, 53, 69, 0.12);
+      color: #b02a37;
+    }
+
+    .table-pill--normal {
+      background: rgba(13, 110, 253, 0.12);
+      color: var(--primary-500);
+    }
+
+    .table-pill--whisper {
+      background: rgba(102, 16, 242, 0.14);
+      color: #5c18d8;
+    }
+
+    .table-responsive {
+      overflow-x: auto;
+    }
+
+    .bg-gradient-light {
+      background: linear-gradient(135deg, #e6f2ff 0%, #f0f7ff 100%);
+    }
+
+    /* Anchor offsets for smooth scroll */
+    [id] {
+      scroll-margin-top: 80px;
+    }
+  </style>
+</head>
+
+<body>
+  <nav class="navbar navbar-expand-lg bg-light sticky-top" id="mainNav">
+    <div class="container">
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive"
+        aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse justify-content-center" id="navbarResponsive">
+        <ul class="navbar-nav text-uppercase">
+          <li class="nav-item">
+            <a class="nav-link" href="#section1">About</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#section2">Dataset</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#section3">Publication</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#section4">Application</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <main id="content">
+    <section class="bg-gradient-primary py-5">
+      <div class="container">
+        <div class="row justify-content-center">
+          <div class="col-md-10 text-center">
+            <span class="hero-eyebrow">AISHELL Series</span>
+            <h1 class="display-4 fw-bold mb-3">
+              AISHELL6-Whisper:
+              <span class="text-highlight">Chinese Mandarin Audio-Visual Whisper Speech</span> Dataset
+            </h1>
+            <p class="lead fs-5 mb-4">
+              Large-scale, perfectly synchronized whisper and voiced speech for next-generation ASR, lip-reading, and
+              multi-modal perception research.
+            </p>
+            <div class="d-flex flex-wrap justify-content-center hero-badges mt-3">
+              <span class="hero-badge">30 h Whisper Speech</span>
+              <span class="hero-badge">30 h Parallel Normal Speech</span>
+              <span class="hero-badge">167 Speakers</span>
+              <span class="hero-badge">RGBD Video Sync</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="py-5">
+      <div class="container">
+        <h2 class="section-heading mb-4" id="section2">Dataset Overview</h2>
+
+        <div class="row g-4 align-items-stretch">
+          <div class="col-lg-7">
+            <div class="info-panel h-100">
+              <p class="mini-title mb-2">At a Glance</p>
+              <h3 class="fw-semibold mb-3">Large-scale whisper speech aligned with normal voice and video cues</h3>
+              <p class="mb-3">
+                AISHELL6-Whisper is a large-scale open-source audio-visual whisper speech dataset containing 30 hours
+                each of whisper and parallel normal speech, with synchronized frontal facial videos.
+              </p>
+              <ul class="info-list">
+                <li>Controlled studio sessions capturing whispered and normal speech in parallel for each participant.</li>
+                <li>167 speakers delivering 10–20 minutes of unique poetry readings without textual overlap.</li>
+                <li>121 sessions feature simultaneous high-fidelity audio and RGBD video; 46 sessions provide premium audio-only recordings.</li>
+              </ul>
+            </div>
+          </div>
+          <div class="col-lg-5">
+            <div class="row g-3">
+              <div class="col-sm-6">
+                <div class="stat-card h-100 text-center">
+                  <span class="stat-value">30 h</span>
+                  <span class="stat-label">Whisper</span>
+                  <p class="stat-desc mb-0">Aligned utterances optimized for whispered ASR benchmarks.</p>
+                </div>
+              </div>
+              <div class="col-sm-6">
+                <div class="stat-card stat-card--accent h-100 text-center">
+                  <span class="stat-value">30 h</span>
+                  <span class="stat-label">Normal</span>
+                  <p class="stat-desc mb-0">Parallel voiced speech to aid transfer and multi-task learning.</p>
+                </div>
+              </div>
+              <div class="col-sm-6">
+                <div class="stat-card h-100 text-center">
+                  <span class="stat-value">167</span>
+                  <span class="stat-label">Speakers</span>
+                  <p class="stat-desc mb-0">Diverse Mandarin accents with balanced gender distribution.</p>
+                </div>
+              </div>
+              <div class="col-sm-6">
+                <div class="stat-card h-100 text-center">
+                  <span class="stat-value">RGBD</span>
+                  <span class="stat-label">Video</span>
+                  <p class="stat-desc mb-0">Frontal facial capture synchronized at 25 fps for lip-reading research.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="row g-4 mt-1">
+          <div class="col-md-4">
+            <div class="feature-card h-100">
+              <h6 class="feature-title mb-2">Recording environment</h6>
+              <p class="mb-0">Collected in a controlled studio environment with parallel whispered and normal speech sessions.</p>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="feature-card h-100">
+              <h6 class="feature-title mb-2">Audio</h6>
+              <p class="mb-0">Single-channel Neumann U87 microphone, 48 kHz sampling rate, background noise below 20 dB.</p>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="feature-card h-100">
+              <h6 class="feature-title mb-2">Video</h6>
+              <p class="mb-0">RGBD camera placed one meter in front of the speaker, 1280×720 resolution, 25 fps.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="table-area mt-5">
+          <div class="table-responsive">
+            <table class="table table-custom align-middle text-center mb-0">
+              <caption class="table-caption">Split statistics for AISHELL6-Whisper (hours and utterances per condition).</caption>
+              <thead>
+                <tr>
+                  <th>Set</th>
+                  <th>Video</th>
+                  <th>Num of Spk</th>
+                  <th>Type</th>
+                  <th>Time (hrs)</th>
+                  <th>Utterances</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td rowspan="4"><span class="table-badge">Train</span></td>
+                  <td rowspan="2"><span class="table-pill table-pill--yes">Yes</span></td>
+                  <td rowspan="2">82</td>
+                  <td><span class="table-pill table-pill--normal">Normal</span></td>
+                  <td>14.8339</td>
+                  <td>10012</td>
+                </tr>
+                <tr>
+                  <td><span class="table-pill table-pill--whisper">Whisper</span></td>
+                  <td>14.8359</td>
+                  <td>9971</td>
+                </tr>
+                <tr>
+                  <td rowspan="2"><span class="table-pill table-pill--no">No</span></td>
+                  <td rowspan="2">28</td>
+                  <td><span class="table-pill table-pill--normal">Normal</span></td>
+                  <td>4.8887</td>
+                  <td>3335</td>
+                </tr>
+                <tr>
+                  <td><span class="table-pill table-pill--whisper">Whisper</span></td>
+                  <td>5.0526</td>
+                  <td>3332</td>
+                </tr>
+                <tr>
+                  <td rowspan="4"><span class="table-badge">Valid</span></td>
+                  <td rowspan="2"><span class="table-pill table-pill--yes">Yes</span></td>
+                  <td rowspan="2">19</td>
+                  <td><span class="table-pill table-pill--normal">Normal</span></td>
+                  <td>3.3252</td>
+                  <td>2331</td>
+                </tr>
+                <tr>
+                  <td><span class="table-pill table-pill--whisper">Whisper</span></td>
+                  <td>3.3983</td>
+                  <td>2304</td>
+                </tr>
+                <tr>
+                  <td rowspan="2"><span class="table-pill table-pill--no">No</span></td>
+                  <td rowspan="2">10</td>
+                  <td><span class="table-pill table-pill--normal">Normal</span></td>
+                  <td>1.731</td>
+                  <td>1190</td>
+                </tr>
+                <tr>
+                  <td><span class="table-pill table-pill--whisper">Whisper</span></td>
+                  <td>1.8038</td>
+                  <td>1191</td>
+                </tr>
+                <tr>
+                  <td rowspan="4"><span class="table-badge">Test</span></td>
+                  <td rowspan="2"><span class="table-pill table-pill--yes">Yes</span></td>
+                  <td rowspan="2">20</td>
+                  <td><span class="table-pill table-pill--normal">Normal</span></td>
+                  <td>3.4126</td>
+                  <td>2423</td>
+                </tr>
+                <tr>
+                  <td><span class="table-pill table-pill--whisper">Whisper</span></td>
+                  <td>3.3601</td>
+                  <td>2351</td>
+                </tr>
+                <tr>
+                  <td rowspan="2"><span class="table-pill table-pill--no">No</span></td>
+                  <td rowspan="2">8</td>
+                  <td><span class="table-pill table-pill--normal">Normal</span></td>
+                  <td>1.3477</td>
+                  <td>940</td>
+                </tr>
+                <tr>
+                  <td><span class="table-pill table-pill--whisper">Whisper</span></td>
+                  <td>1.3021</td>
+                  <td>942</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <div class="table-area mt-4">
+          <div class="table-responsive">
+            <table class="table table-custom align-middle text-center mb-0">
+              <caption class="table-caption">Context against existing whisper speech corpora.</caption>
+              <thead>
+                <tr>
+                  <th class="text-start">Dataset</th>
+                  <th>Modality</th>
+                  <th>Language</th>
+                  <th>Time (hrs)</th>
+                  <th>Parallel</th>
+                  <th>Num of Spk</th>
+                  <th>Sampling Rate</th>
+                  <th>Bit</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td class="text-start">UTVE-I</td>
+                  <td>Audio</td>
+                  <td>English</td>
+                  <td>&lt;1</td>
+                  <td>Yes</td>
+                  <td>12</td>
+                  <td>44.1HZ</td>
+                  <td>16</td>
+                </tr>
+                <tr>
+                  <td class="text-start">UTVE-II</td>
+                  <td>Audio</td>
+                  <td>English</td>
+                  <td>1</td>
+                  <td>No</td>
+                  <td>112</td>
+                  <td>44.1HZ</td>
+                  <td>16</td>
+                </tr>
+                <tr>
+                  <td class="text-start">AVWD</td>
+                  <td>Audio-visual</td>
+                  <td>Chinese</td>
+                  <td>&lt;2.44</td>
+                  <td>Yes</td>
+                  <td>10</td>
+                  <td>44.1HZ</td>
+                  <td>16</td>
+                </tr>
+                <tr>
+                  <td class="text-start">CHAINS</td>
+                  <td>Audio</td>
+                  <td>English</td>
+                  <td>&lt;3</td>
+                  <td>Yes</td>
+                  <td>36</td>
+                  <td>44.1kHz</td>
+                  <td>16</td>
+                </tr>
+                <tr>
+                  <td class="text-start">Whi-spe</td>
+                  <td>Audio</td>
+                  <td>Serbian</td>
+                  <td>&lt;5</td>
+                  <td>Yes</td>
+                  <td>10</td>
+                  <td>22050HZ</td>
+                  <td>16</td>
+                </tr>
+                <tr>
+                  <td class="text-start">AV-Whisper</td>
+                  <td>Audio-visual</td>
+                  <td>English</td>
+                  <td>&lt;10</td>
+                  <td>Yes</td>
+                  <td>11</td>
+                  <td>48kHZ</td>
+                  <td>-</td>
+                </tr>
+                <tr>
+                  <td class="text-start">CIAIR</td>
+                  <td>Audio-visual</td>
+                  <td>Japanese</td>
+                  <td>15</td>
+                  <td>Yes</td>
+                  <td>123</td>
+                  <td>16 kHz</td>
+                  <td>16</td>
+                </tr>
+                <tr>
+                  <td class="text-start">iWhisper-Mandarin</td>
+                  <td>Audio</td>
+                  <td>Chinese</td>
+                  <td>15</td>
+                  <td>Yes</td>
+                  <td>80</td>
+                  <td>16kHz</td>
+                  <td>-</td>
+                </tr>
+                <tr>
+                  <td class="text-start">wSPIRE</td>
+                  <td>Audio</td>
+                  <td>English</td>
+                  <td>18</td>
+                  <td>Yes</td>
+                  <td>88</td>
+                  <td>采集时 44.1kHz，处理后16kHz</td>
+                  <td>16</td>
+                </tr>
+                <tr>
+                  <td class="text-start">wTIMIT</td>
+                  <td>Audio</td>
+                  <td>English</td>
+                  <td>26</td>
+                  <td>Yes</td>
+                  <td>48</td>
+                  <td>44.1kHz</td>
+                  <td>16</td>
+                </tr>
+                <tr class="table-focus">
+                  <td class="text-start fw-semibold">AISHELL6-Whisper</td>
+                  <td>Audio-visual</td>
+                  <td>Chinese</td>
+                  <td>30</td>
+                  <td>Yes</td>
+                  <td>167</td>
+                  <td>48kHZ</td>
+                  <td>16</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+</body>
+
+</html>
